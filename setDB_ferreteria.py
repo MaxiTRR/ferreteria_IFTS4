@@ -1,5 +1,6 @@
 from ferreteriaDB import *
 from ferreteria_Client import *
+from ferreteria_Prov import *
 
 #Metodos para setear la base de datos con registros iniciales. COMENTAR Y DESCOMENTAR.
 BD = "ferreteria"
@@ -8,9 +9,9 @@ provTable = "proveedores"
 artTable = "articulos"
 
 def setDatabase():
-    Database.create_DB(BD)
-    Database.create_Table_Clientes(BD, clientTable)
-    Database.ceate_Table_Proveedores(BD, provTable)
+    #Database.create_DB(BD)
+    #Database.create_Table_Clientes(BD, clientTable)
+    Database.create_Table_Proveedores(BD, provTable)
 
 #setDatabase()
 
@@ -18,3 +19,8 @@ def setClientRegs():
     Client.reg_Client(32548528, "Peter", "Parker", "Telarania 29", 45245887, "spiderParker@web.com", "monotributista", True)
 
 #setClientRegs()
+
+def setProvRegs():
+    Provider.reg_Prov(69542178, "Black & Decker", "Ramon Falcon 345, Flores, CABA", 42896524, "black@decker.com", "inscripto", True)
+
+setProvRegs()
