@@ -1,5 +1,6 @@
 import mariadb
 from helpers_ferreteria import show_menu_principal
+from menu_provider_ferreteria import *
 
 principal_Menu = True
 
@@ -9,7 +10,7 @@ while principal_Menu == True:
     option = input("Ingrese el número de opción: ")
 
     if option == "1":
-        print("PROVEEDORES")
+        menu_providers()
     if option == "2":
         print("CLIENTES")
     if option == "3":
