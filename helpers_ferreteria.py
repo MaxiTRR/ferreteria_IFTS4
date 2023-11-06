@@ -13,3 +13,15 @@ def show_menu_principal():
         
         *********************************************************
         """)
+
+#Validacion input del dni del cliente y proveedores
+def inputDni(text):
+    val = True
+    while val == True:
+        try:
+            dni = int(input(text))
+        except ValueError:
+            print("El dni solo acepta caracteres numericos")
+        else:
+            val = False
+    return dni
