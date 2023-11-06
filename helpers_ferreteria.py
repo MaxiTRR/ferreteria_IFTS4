@@ -14,6 +14,21 @@ def show_menu_principal():
         *********************************************************
         """)
 
+#Funcion para mostrar el menu de proveedores
+def show_menu_providers():
+    print("""
+            *************** MENU PROVEEDORES - FERRETERIA ***************
+
+            [1] - Registrar/Alta proveedor
+            [2] - Baja proveedor
+            [3] - Modificar datos proveedor
+            [4] - Pedido de stock
+            [5] - Devolucion de stock
+            [6] - Salir menu principal
+
+            *********************************************************
+            """)
+
 #Validacion input del dni del cliente y proveedores
 def inputDni(text):
     val = True
