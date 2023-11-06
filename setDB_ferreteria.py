@@ -12,7 +12,8 @@ artTable = "articulos"
 def set_Database():
     #Database.create_DB(BD)
     #Database.create_Table_Clientes(BD, clientTable)
-    Database.create_Table_Proveedores(BD, provTable)
+    #Database.create_Table_Proveedores(BD, provTable)
+    Database.create_Table_Articulos(BD, artTable)
 
 #set_Database()
 
@@ -27,6 +28,6 @@ def set_Prov_Regs():
 #set_Prov_Regs()
 
 def set_Art_Reg():
-    Article.reg_Art(3100, "Pinza De Punta","herramienta manual", 7.791, 0, 42896524, True)
+    Article.reg_Art(3100, "Pinza De Punta","herramienta manual", 7.791, 42896524, True,0, False)
 
-set_Art_Reg()
+#set_Art_Reg()
