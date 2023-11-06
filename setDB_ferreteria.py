@@ -9,24 +9,24 @@ clientTable = "clientes"
 provTable = "proveedores"
 artTable = "articulos"
 
-def setDatabase():
+def set_Database():
     #Database.create_DB(BD)
     #Database.create_Table_Clientes(BD, clientTable)
     Database.create_Table_Proveedores(BD, provTable)
 
-#setDatabase()
+#set_Database()
 
-def setClientRegs():
+def set_Client_Regs():
     Client.reg_Client(32548528, "Peter", "Parker", "Telarania 29", 45245887, "spiderParker@web.com", "monotributista", True)
 
-#setClientRegs()
+#set_Client_Regs()
 
-def setProvRegs():
+def set_Prov_Regs():
     Provider.reg_Prov(69542178, "Black & Decker", "Ramon Falcon 345, Flores, CABA", 42896524, "black@decker.com", "inscripto", True)
 
-#setProvRegs()
+#set_Prov_Regs()
 
-def setArtReg():
+def set_Art_Reg():
     Article.reg_Art(3100, "Pinza De Punta","herramienta manual", 7.791, 0, 42896524, True)
 
-setArtReg()
+set_Art_Reg()
