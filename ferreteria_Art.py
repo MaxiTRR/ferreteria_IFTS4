@@ -25,3 +25,11 @@ class Article():
         myresultado = mycursor.fetchone()
         print(myresultado)  # REVISAR ESTE PRINT
         return myresultado
+
+    @classmethod
+    def change_alta_article(self, cod_art, alta_art):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"UPDATE articulos SET alta_art = {alta_art} WHERE cod_art = {cod_art}"
+        mycursor.execute(sql)
+        mydb.commit()
