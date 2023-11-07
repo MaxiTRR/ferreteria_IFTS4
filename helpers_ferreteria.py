@@ -55,3 +55,15 @@ def inputDni(text):
         else:
             val = False
     return dni
+
+#Validacion input del codigo de articulo
+def input_cod_art(text):
+    val = True
+    while val == True:
+        try:
+            cod_art = int(input(text))
+        except ValueError:
+            print("El codigo de articulo solo acepta caracteres numericos.")
+        else:
+            val = False
+    return cod_art
