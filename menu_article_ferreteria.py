@@ -26,6 +26,7 @@ def menu_articles():
                             print("El articulo ya se encuentra dado de alta.")
                         else:
                             print("El articulo se encuentra dado de baja. Se dara de alta.") #CAMBIAR
+                            Article.change_alta_article(cod_art, 1)
                     else:
                         print("El articulo no se encuentra registrado. Se pueden ingresar sus datos.") #CAMBIAR
 
