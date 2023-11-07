@@ -1,4 +1,4 @@
-from helpers_ferreteria import inputDni, show_menu_articles
+from helpers_ferreteria import inputDni, input_cod_art, show_menu_articles
 from ferreteria_Art import *
 from ferreteria_Prov import *
 
@@ -19,4 +19,13 @@ def menu_articles():
                     print("El proveedor se encuentra dado de baja.")
                 else:
                     print("Se puede ingresar los datos del articulo.") #CAMBIAR
+                    cod_art = input_cod_art("Ingrese el codigo del articulo que desea registrar/dar de alta: ")
+                    result_art = Article.query_codArt_alta_article(cod_art)
+                    if result_art:
+                        if result_art[1] == 1:
+                            print("El articulo ya se encuentra dado de alta.")
+                        else:
+                            print("El articulo se encuentra dado de baja. Se dara de alta.") #CAMBIAR
+                    else:
+                        print("El articulo no se encuentra registrado. Se pueden ingresar sus datos.") #CAMBIAR
 
