@@ -29,4 +29,29 @@ def menu_articles():
                             Article.change_alta_article(cod_art, 1)
                     else:
                         print("El articulo no se encuentra registrado. Se pueden ingresar sus datos.") #CAMBIAR
+                        operation = 1
+
+                        while operation == 1:
+                            ing_art_name = input("Ingrese el nombre del articulo: ")
+                            if ing_art_name == "":
+                                print("El nombre del articulo no puede ser un campo vacio.")
+                            else:
+                                operation = 2
+
+                        while operation == 2:
+                            ing_art_rubro = input("Ingrese un rubro para el articulo:" )
+                            if ing_art_rubro == "":
+                                print("El rubro del articulo no puede ser un campo vacio.")
+                            else:
+                                operation = 3
+
+                        while operation == 3:
+                            try:
+                                ing_art_price = int(input("Ingrese el precio del articulo: "))
+                            except ValueError:
+                                print("El campo precio solo acepta valores numericos.")
+                            else:
+                                operation = 4
+
+                        Article.reg_Art(cod_art, ing_art_name, ing_art_rubro, ing_art_price, dni_prov)
 
