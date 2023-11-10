@@ -1,4 +1,4 @@
-from helpers_ferreteria import inputDni, show_menu_providers
+from helpers_ferreteria import inputDni, show_menu_providers, continue_or_exit
 from ferreteria_Prov import *
 
 def menu_providers():
@@ -59,5 +59,6 @@ def menu_providers():
                     print("El proveedor se encuentra dado de baja, por lo tanto se dara de Alta.") #CAMBIAR
                     Provider.change_alta_provider(dni_prov, 1)
 
+            opc_Chosen = continue_or_exit(opc_Chosen)
 
 

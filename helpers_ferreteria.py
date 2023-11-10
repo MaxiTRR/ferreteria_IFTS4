@@ -20,11 +20,12 @@ def show_menu_providers():
             *************** MENU PROVEEDORES - FERRETERIA ***************
 
             [1] - Registrar/Alta proveedor
-            [2] - Baja proveedor
-            [3] - Modificar datos proveedor
-            [4] - Pedido de stock
-            [5] - Devolucion de stock
-            [6] - Salir menu principal
+            [2] - Consultar datos proveedor
+            [3] - Baja proveedor
+            [4] - Modificar datos proveedor
+            [5] - Pedido de stock
+            [6] - Devolucion de stock
+            [7] - Salir menu principal
 
             *********************************************************
             """)
@@ -67,3 +68,35 @@ def input_cod_art(text):
         else:
             val = False
     return cod_art
+
+#Validacion input del telefono (proveedor)
+def input_Tel():
+    tel = 0
+    val = True
+    while val == True:
+        try:
+            tel = int(input("Ingrese el telefono nuevo que desea modificar: "))
+        except ValueError:
+            print("El campo telefono solo acepta caracteres numericos o se ha elegido mantener el campo sin modificacion.")
+            return tel
+        else:
+            val = False
+            return tel
+
+#Funcion para seguir agregando opciones o salir al submenu (proveedores)
+def continue_or_exit(opt):
+    opc_Chosen = opt
+    con = input("Desea continuar? Escriba N si desea salir al menu, "
+                   "sino presione cualquier tecla: ").upper()
+    if con == "N":
+        opc_Chosen = "10"
+        return opc_Chosen
+    return opc_Chosen
+
+#Funcion para limpiar la pantalla de la consola
+def limpioPantalla():
+    sisOper = os.name
+    if sisOper == "posix":   # si fuera UNIX, mac para Apple, java para maquina virtual Java
+        os.system("clear")
+    elif sisOper == "ce" or sisOper == "nt" or sisOper == "dos":  # windows
+        os.system("cls")
