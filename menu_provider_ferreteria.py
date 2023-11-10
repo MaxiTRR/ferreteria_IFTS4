@@ -61,6 +61,17 @@ def menu_providers():
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
+        #CONSULTAR DATOS PROVEEDOR
+        while opc_Chosen == "2":
+            dni_prov = inputDni("Ingrese el dni del proveedor del que desea consultar sus datos: ")
+            result = Provider.query_provider(dni_prov)
+            if not result:
+                print("El proveedor no se encuentra registrado.") #CAMBIAR
+            else:
+                print(result[0]) #CAMBIAR
+
+            opc_Chosen = continue_or_exit(opc_Chosen)
+
         #MODIFICAR DATOS PROVEEDOR (TELEFONO)
         while opc_Chosen == "4":
             dni_prov = inputDni("Ingrese el dni del proveedor del que desea modificar sus datos: ")

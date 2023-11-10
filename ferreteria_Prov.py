@@ -17,6 +17,16 @@ class Provider():
         mydb.commit()
 
     @classmethod
+    def query_provider(self, dni_prov):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"SELECT * FROM proveedores WHERE dni_prov = {dni_prov}"
+        mycursor.execute(sql)
+        myresultado = mycursor.fetchone()
+        print(myresultado)  # REVISAR ESTE PRINT
+        return myresultado
+
+    @classmethod
     def query_dni_and_alta_prov(self, dni_prov):
         mydb = self.Database
         mycursor = mydb.cursor()
