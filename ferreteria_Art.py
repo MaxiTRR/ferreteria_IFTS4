@@ -33,3 +33,5 @@ class Article():
         sql = f"UPDATE articulos SET alta_art = {alta_art} WHERE cod_art = {cod_art}"
         mycursor.execute(sql)
         mydb.commit()
+
+

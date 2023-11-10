@@ -1,4 +1,4 @@
-from helpers_ferreteria import inputDni, show_menu_providers, continue_or_exit
+from helpers_ferreteria import inputDni, show_menu_providers, continue_or_exit, input_Tel
 from ferreteria_Prov import *
 
 def menu_providers():
@@ -61,4 +61,26 @@ def menu_providers():
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
+        #MODIFICAR DATOS PROVEEDOR (TELEFONO)
+        while opc_Chosen == "4":
+            dni_prov = inputDni("Ingrese el dni del proveedor del que desea modificar sus datos: ")
+            result = Provider.query_dni_razon_social_tel_alta_prov(dni_prov)
+            if not result:
+                print("El proveedor no se encuentra registrado.") #CAMBIAR
+            else:
+                if result[3] == 0:
+                    print("El proveedor se encuentra dado de baja.") #CAMBIAR
+                else:
+                    tel_prov = input_Tel()
+                    if tel_prov == 0:
+                        print("No se han producido cambios en el registro.")
+                    else:
+                        Provider.change_tel_prov(dni_prov, tel_prov)
+                        Provider.query_dni_razon_social_tel_alta_prov(dni_prov)
+
+            opc_Chosen = continue_or_exit(opc_Chosen)
+
+        #SALIR MENU PRINCIPAL
+        if opc_Chosen == "7":
+            opc = False
 
