@@ -25,3 +25,11 @@ class Provider():
         myresultado = mycursor.fetchone()
         print(myresultado) #REVISAR ESTE PRINT
         return myresultado
+
+    @classmethod
+    def change_alta_provider(self, dni_prov, alta_prov):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"UPDATE proveedores SET alta_prov = {alta_prov} WHERE dni_prov = {dni_prov}"
+        mycursor.execute(sql)
+        mydb.commit()
