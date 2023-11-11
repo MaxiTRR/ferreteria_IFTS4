@@ -17,6 +17,16 @@ class Article():
         mydb.commit()
 
     @classmethod
+    def query_art(self, cod_art):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"SELECT * FROM articulos WHERE cod_art = {cod_art}"
+        mycursor.execute(sql)
+        myresultado = mycursor.fetchone()
+        print(myresultado)  # REVISAR ESTE PRINT
+        return myresultado
+
+    @classmethod
     def query_codArt_alta_article(self, cod_art):
         mydb = self.Database
         mycursor = mydb.cursor()

@@ -1,4 +1,4 @@
-from helpers_ferreteria import inputDni, input_cod_art, show_menu_articles
+from helpers_ferreteria import inputDni, input_cod_art, show_menu_articles, continue_or_exit
 from ferreteria_Art import *
 from ferreteria_Prov import *
 
@@ -55,3 +55,19 @@ def menu_articles():
 
                         Article.reg_Art(cod_art, ing_art_name, ing_art_rubro, ing_art_price, dni_prov)
 
+            opc_Chosen = continue_or_exit(opc_Chosen)
+
+        #CONSULTAR DATOS ARTICULOS
+        while opc_Chosen == "2":
+            cod_art = input_cod_art("Ingrese el codigo del articulo que desea registrar/dar de alta: ")
+            result = Article.query_art(cod_art)
+            if not result:
+                print("El articulo no se encuentra registrado.")  # CAMBIAR
+            else:
+                print(result[0]) #CAMBIAR
+
+            opc_Chosen = continue_or_exit(opc_Chosen)
+
+        # SALIR MENU PRINCIPAL
+        if opc_Chosen == "7":
+            opc = False
