@@ -36,11 +36,12 @@ def show_menu_articles():
             *************** MENU ARTICULOS - FERRETERIA ***************
 
             [1] - Registrar/Alta articulo
-            [2] - Baja articulo
-            [3] - Modificar datos de un articulo
-            [4] - Ingreso de remito de pedido de stock
-            [5] - Listado de articulos sin stock
-            [6] - Salir menu principal
+            [2] - Consultar datos articulo
+            [3] - Baja articulo
+            [4] - Modificar datos de un articulo
+            [5] - Ingreso de remito de pedido de stock
+            [6] - Listado de articulos sin stock
+            [7] - Salir menu principal
 
             *********************************************************
             """)
