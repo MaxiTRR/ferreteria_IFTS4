@@ -8,11 +8,11 @@ class Provider():
         pass
 
     @classmethod
-    def reg_Prov(self, dni_prov, razon_social, dir_prov, tel_prov, mail_prov, sit_IVA_prov, alta_prov = True):
+    def reg_Prov(self, dni_prov, razon_social, dir_prov, tel_prov, mail_prov, sit_IVA_prov, alta_prov = True, estado_pedido = False, obs_prov = ""):
         mydb = self.Database
         mycursor = mydb.cursor()
-        sql = "INSERT INTO proveedores (dni_prov, razon_social, dir_prov, tel_prov, mail_prov, sit_IVA_prov, alta_prov) VALUES(%s, %s, %s, %s, %s, %s, %s)"
-        val = (dni_prov, razon_social, dir_prov, tel_prov, mail_prov, sit_IVA_prov, alta_prov)
+        sql = "INSERT INTO proveedores (dni_prov, razon_social, dir_prov, tel_prov, mail_prov, sit_IVA_prov, alta_prov, estado_pedido, obs_prov) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        val = (dni_prov, razon_social, dir_prov, tel_prov, mail_prov, sit_IVA_prov, alta_prov, estado_pedido, obs_prov)
         mycursor.execute(sql, val)
         mydb.commit()
 
