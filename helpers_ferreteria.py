@@ -46,6 +46,21 @@ def show_menu_articles():
             *********************************************************
             """)
 
+#Funcion para mostrar el menu de clientes
+def show_menu_clients():
+    print("""
+        *************** MENU CLIENTES - FERRETERIA ***************
+
+        [1] - Registrar/Alta cliente
+        [2] - Consultar datos cliente
+        [3] - Baja cliente
+        [4] - Modificar datos de un cliente
+        [5] - Salir menu principal
+
+        *********************************************************
+        """)
+
+
 #Validacion input del dni del cliente y proveedores
 def inputDni(text):
     val = True

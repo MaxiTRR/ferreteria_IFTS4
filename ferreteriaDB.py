@@ -34,7 +34,7 @@ class Database():
         mycursor = mydb.cursor()
         mycursor.execute(
             "CREATE TABLE " + f"{name_Table}" + "(dni_cli INT PRIMARY KEY,nombre_cli VARCHAR(255),apellido_cli VARCHAR(255), dir_cli VARCHAR(255),"
-                                               "tel_cli VARCHAR(255), mail_cli VARCHAR(255),sit_IVA_cli VARCHAR(255), alta_cli BOOL)")
+                                               "tel_cli VARCHAR(255), mail_cli VARCHAR(255),sit_IVA_cli VARCHAR(255), alta_cli BOOL, obs_cli VARCHAR(255))")
         mycursor.execute("SHOW TABLES")
         for ind in mycursor:
             print(ind)
