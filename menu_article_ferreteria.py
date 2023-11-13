@@ -1,4 +1,4 @@
-from helpers_ferreteria import inputDni, input_cod_art, show_menu_articles, continue_or_exit
+from helpers_ferreteria import inputDni, input_cod_art, show_menu_articles, continue_or_exit, input_price
 from ferreteria_Art import *
 from ferreteria_Prov import *
 
@@ -65,6 +65,30 @@ def menu_articles():
                 print("El articulo no se encuentra registrado.")  # CAMBIAR
             else:
                 print(result[0]) #CAMBIAR
+
+            opc_Chosen = continue_or_exit(opc_Chosen)
+
+        #MODIFICAR DATOS ARTICULO (PRECIO)
+        while opc_Chosen == "4":
+            cod_art = input_cod_art("Ingrese el codigo del articulo que desea modificar: ")
+            result = Article.query_codArt_name_price_alta_estadoTrans_article(cod_art)
+            if not result:
+                print("El articulo se encuentra registrado.")
+            else:
+                if result[3] == 0:
+                    print("El articulo se encuentra dado de baja. No puede modificar sus datos hasta darlo de alta nuevamente.")
+                else:
+                    if result[4] == 1:
+                        print("El articulo se encuentra en una transaccion activa. Debe finalizarla para poder modificar sus datos.")
+                    else:
+                        ing_new_price = input_price("Ingrese el nuevo precio del articulo (No ingrese datos para dejar como estaba):")
+                        if ing_new_price == 0:
+                            print("No se han producido cambios en el registro.")
+                            print(result[0] + result [2]) #CAMBIAR
+                        else:
+                            Article.chage_price_article(cod_art, ing_new_price)
+                            Article.query_codArt_name_price_alta_estadoTrans_article(cod_art) #CAMBIAR?
+                            print("Se han modificado sus datos con exito!") #CAMBIAR
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
