@@ -67,6 +67,17 @@ def menu_clients():
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
+        #CONSULTAR DATOS CLIENTE
+        while opc_Chosen == "2":
+            dni_cli = inputDni("Ingrese el DNI del cliente que desea registrar: ")
+            result = Client.query_client(dni_cli)
+            if not result:
+                print("El cliente no se encuentra registrado.")
+            else:
+                Client.query_client(dni_cli)  # CAMBIAR
+
+            opc_Chosen = continue_or_exit(opc_Chosen)
+
         # SALIR MENU PRINCIPAL
         if opc_Chosen == "5":
             opc = False
