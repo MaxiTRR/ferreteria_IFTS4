@@ -72,6 +72,29 @@ def menu_providers():
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
+        #BAJA PROVEEDOR
+        while opc_Chosen == "3":
+            dni_prov = inputDni("Ingrese el dni del proveedor del que desea dar de baja: ")
+            result = Provider.query_dni_razonSocial_alta_estadoPedido_prov(dni_prov)
+            if not result:
+                print("El proveedor no se encuentra registrado.")
+            else:
+                if result[2] == 0:
+                    print("El proveedor ya se encuentra dado de baja.")
+                else:
+                    if result[3] == 1:
+                        print("El proveedor se encuentra en un pedido de stock activo. Debe finalizarlo para poder darlo de baja.") #CAMBIAR
+                    else:
+                        proceed = input("Desea dar de baja al proveedor? Y/N: ").upper()
+                        if proceed == "Y":
+                            Provider.change_alta_provider(dni_prov, 0)
+                            Provider.query_dni_razonSocial_alta_estadoPedido_prov(dni_prov) #CAMBIAR
+                            print("Proveedor dado de baja con exito!") #CAMBIAR
+                        else:
+                            print("No se realizaron cambios en el estado del proveedor.")
+
+            opc_Chosen = continue_or_exit(opc_Chosen)
+
         #MODIFICAR DATOS PROVEEDOR (TELEFONO)
         while opc_Chosen == "4":
             dni_prov = inputDni("Ingrese el dni del proveedor del que desea modificar sus datos: ")

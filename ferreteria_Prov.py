@@ -46,6 +46,15 @@ class Provider():
         print(myresultado)  # REVISAR ESTE PRINT
         return myresultado
 
+    @classmethod
+    def query_dni_razonSocial_alta_estadoPedido_prov(self, dni_prov):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"SELECT dni_prov, razon_social, alta_prov, estado_pedido FROM proveedores WHERE dni_prov = {dni_prov}"
+        mycursor.execute(sql)
+        myresultado = mycursor.fetchone()
+        print(myresultado)  # REVISAR ESTE PRINT
+        return myresultado
 
     @classmethod
     def change_alta_provider(self, dni_prov, alta_prov):
