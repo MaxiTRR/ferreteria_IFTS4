@@ -111,6 +111,17 @@ def menu_articles():
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
+        #CONSULTA ARTICULOS SIN STOCK
+        while opc_Chosen == "6":
+            result = Article.query_codArt_nombreArt_alta_stock_article()
+            if not result:
+                print("No se encontro ningun articulo con 0 stock.")
+            else:
+                for reg in result:
+                    print(reg)
+
+            opc_Chosen = continue_or_exit(opc_Chosen)
+
         # SALIR MENU PRINCIPAL
         if opc_Chosen == "7":
             opc = False

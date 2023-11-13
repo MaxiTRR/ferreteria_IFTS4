@@ -57,6 +57,16 @@ class Article():
         return myresultado
 
     @classmethod
+    def query_codArt_nombreArt_alta_stock_article(self):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"SELECT cod_art, nombre_art, alta_art, estado_trans FROM articulos WHERE stock_art = 0"
+        mycursor.execute(sql)
+        myresultado = mycursor.fetchall()
+        #print(myresultado)  # REVISAR ESTE PRINT
+        return myresultado
+
+    @classmethod
     def change_alta_article(self, cod_art, alta_art):
         mydb = self.Database
         mycursor = mydb.cursor()
