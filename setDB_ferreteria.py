@@ -12,8 +12,8 @@ artTable = "articulos"
 def set_Database():
     #Database.create_DB(BD)
     #Database.create_Table_Clientes(BD, clientTable)
-    #Database.create_Table_Proveedores(BD, provTable)
-    Database.create_Table_Articulos(BD, artTable)
+    Database.create_Table_Proveedores(BD, provTable)
+    #Database.create_Table_Articulos(BD, artTable)
 
 #set_Database()
 

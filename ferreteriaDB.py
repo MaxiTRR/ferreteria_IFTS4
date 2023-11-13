@@ -44,7 +44,7 @@ class Database():
         mydb = self.connect_DB(name_DB)
         mycursor = mydb.cursor()
         mycursor.execute(f"CREATE TABLE {name_Table}(dni_prov INT PRIMARY KEY, razon_social VARCHAR(255), dir_prov VARCHAR(255),"
-                         f"tel_prov INT, mail_prov VARCHAR(255), sit_IVA_prov VARCHAR(255), alta_prov BOOL)")
+                         f"tel_prov INT, mail_prov VARCHAR(255), sit_IVA_prov VARCHAR(255), alta_prov BOOL, estado_pedido BOOL, obs_prov VARCHAR(255))")
         mycursor.execute("SHOW TABLES")
         for ind in mycursor:
             print(ind)
