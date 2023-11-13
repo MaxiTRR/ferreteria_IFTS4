@@ -71,16 +71,19 @@ def menu_articles():
         #BAJA ARTICULO
         while opc_Chosen == "3":
             cod_art = input_cod_art("Ingrese el codigo del articulo que desea registrar/dar de alta: ")
-            result = Article.query_codArt_alta_article(cod_art)
+            result = Article.query_codArt_alta_estadoTrans_article(cod_art)
             if not result:
                 print("El articulo no se encuentra registrado.")  # CAMBIAR
             else:
                 if result[1] == 0:
                     print("El articulo ya se encuentra dado de baja.")
                 else:
-                    print("El articulo se dara de baja.") #CAMBIAR
-                    Article.change_alta_article(cod_art, 0)
-                    Article.query_codArt_alta_article(cod_art) #CAMBIAR
+                    if result[2] == 1:
+                        print("El articulo se encuentra en una transaccion activa. No podra darse de baja hasta que se finalize la transaccion.")
+                    else:
+                        print("El articulo se dara de baja.") #CAMBIAR
+                        Article.change_alta_article(cod_art, 0)
+                        Article.query_codArt_alta_estadoTrans_article(cod_art) #CAMBIAR
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
