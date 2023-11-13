@@ -84,6 +84,20 @@ def input_Tel():
             val = False
             return tel
 
+#Validacion input del precio (Articulo)
+def input_price(text):
+    price = 0
+    val = True
+    while val == True:
+        try:
+            price = int(input(text))
+        except ValueError:
+            print("El campo precio solo acepta valores numericos.")
+            return price
+        else:
+            val = False
+            return price
+
 #Funcion para seguir agregando opciones o salir al submenu (proveedores)
 def continue_or_exit(opt):
     opc_Chosen = opt

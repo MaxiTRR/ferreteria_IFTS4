@@ -37,11 +37,30 @@ class Article():
         return myresultado
 
     @classmethod
+    def query_codArt_name_price_alta_estadoTrans_article(self, cod_art):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"SELECT cod_art, nombre_art, precio_art, alta_art, estado_trans FROM articulos WHERE cod_art = {cod_art}"
+        mycursor.execute(sql)
+        myresultado = mycursor.fetchone()
+        print(myresultado)  # REVISAR ESTE PRINT
+        return myresultado
+
+    @classmethod
     def change_alta_article(self, cod_art, alta_art):
         mydb = self.Database
         mycursor = mydb.cursor()
         sql = f"UPDATE articulos SET alta_art = {alta_art} WHERE cod_art = {cod_art}"
         mycursor.execute(sql)
         mydb.commit()
+
+    @classmethod
+    def chage_price_article(self, cod_art, precio_art):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"UPDATE articulos SET precio_art = {precio_art} WHERE cod_art = {cod_art}"
+        mycursor.execute(sql)
+        mydb.commit()
+
 
 
