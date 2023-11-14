@@ -33,3 +33,11 @@ class Client():
         myresultado = mycursor.fetchone()
         print(myresultado)  # REVISAR ESTE PRINT
         return myresultado
+
+    @classmethod
+    def change_alta_client(self, dni_cli, alta_cli):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"UPDATE clientes SET alta_cli = {alta_cli} WHERE dni_cli = {dni_cli}"
+        mycursor.execute(sql)
+        mydb.commit()
