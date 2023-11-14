@@ -16,6 +16,12 @@ def menu_clients():
                     print("El cliente ya se encuentra dado de alta.")
                 else:
                     print("El cliente se encuentra dado de baja. Dar de alta?") #CAMBIAR
+                    proceed = input("Desea dar de alta al cliente nuevamente? Y/N: ").upper()
+                    if proceed != "Y":
+                        print("No se realizaron cambios en el estado del cliente.")
+                    else:
+                        Client.change_alta_client(dni_cli, 1)
+                        Client.query_client(dni_cli)
             else:
                 print("El cliente no se encuentra registrado. Puede ingresar sus datos para registrarlo.")
                 operation = 1
