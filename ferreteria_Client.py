@@ -35,9 +35,27 @@ class Client():
         return myresultado
 
     @classmethod
+    def query_dni_name_lastname_alta_obs_client(self, dni_cli):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"SELECT dni_cli, nombre_cli, apellido_cli, alta_cli, obs_cli FROM clientes WHERE dni_cli = {dni_cli}"
+        mycursor.execute(sql)
+        myresultado = mycursor.fetchone()
+        print(myresultado)  # REVISAR ESTE PRINT
+        return myresultado
+
+    @classmethod
     def change_alta_client(self, dni_cli, alta_cli):
         mydb = self.Database
         mycursor = mydb.cursor()
         sql = f"UPDATE clientes SET alta_cli = {alta_cli} WHERE dni_cli = {dni_cli}"
+        mycursor.execute(sql)
+        mydb.commit()
+
+    @classmethod
+    def change_alta_obs_client(self, dni_cli, alta_cli, obs_cli):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"UPDATE clientes SET alta_cli = {alta_cli}, obs_cli = '{obs_cli}' WHERE dni_cli = {dni_cli}"
         mycursor.execute(sql)
         mydb.commit()

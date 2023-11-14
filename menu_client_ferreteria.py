@@ -84,6 +84,29 @@ def menu_clients():
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
+        #BAJA CLIENTE
+        while opc_Chosen == "3":
+            dni_cli = inputDni("Ingrese el DNI del cliente que desea registrar: ")
+            result_1 = Client.query_dni_name_lastname_alta_obs_client(dni_cli)
+            if not result_1:
+                print("El cliente no se encuentra registrado.")
+            else:
+                if result_1[3] == 0:
+                    print("El cliente ya se encuentra dado de baja.")
+                else:
+                    proceed = input("Desea dar de baja al cliente? Y/N: ").upper()
+                    if proceed != "Y":
+                        print("No se realizaron cambios en el estado del cliente.")
+                    else:
+                        obs = input("Desea agregar alguna observacion?: ")
+                        if obs == "":
+                            obs = result_1[4]
+                            Client.change_alta_obs_client(dni_cli, 0, obs)
+                        else:
+                            Client.change_alta_obs_client(dni_cli, 0, obs)
+
+            opc_Chosen = continue_or_exit(opc_Chosen)
+
         # SALIR MENU PRINCIPAL
         if opc_Chosen == "5":
             opc = False
