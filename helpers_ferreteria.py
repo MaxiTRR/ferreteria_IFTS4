@@ -60,6 +60,16 @@ def show_menu_clients():
         *********************************************************
         """)
 
+#Funcoon para mostrar la opcion ante el IVA del cliente
+def show_menu_Iva():
+    print("""
+    
+        [1] - Responsable Inscripto
+        [2] - Sujeto Excento
+        [3] - Autonomo
+        [4] - Monotributista
+
+        """)
 
 #Validacion input del dni del cliente y proveedores
 def inputDni(text):

@@ -1,4 +1,4 @@
-from helpers_ferreteria import show_menu_clients, inputDni, continue_or_exit
+from helpers_ferreteria import show_menu_clients, inputDni, continue_or_exit, show_menu_Iva
 from ferreteria_Client import *
 
 def menu_clients():
@@ -104,6 +104,37 @@ def menu_clients():
                             Client.change_alta_obs_client(dni_cli, 0, obs)
                         else:
                             Client.change_alta_obs_client(dni_cli, 0, obs)
+
+            opc_Chosen = continue_or_exit(opc_Chosen)
+            
+        #MODIFICAR DATOS CLIENTES
+        while opc_Chosen == "4":
+            dni_cli = inputDni("Ingrese el DNI del cliente que desea modificar: ")
+            result = Client.query_dni_nombre_apellido_IVA_alta_alta_client(dni_cli)
+            if not result:
+                print("El cliente no se encuentra registrado.")
+            else:
+                if result[4] == 0:
+                    print("El cliente se encuentra dado de baja.")
+                else:
+                    show_menu_Iva()
+                    iva = input("Ingrese la nueva situacion ante el IVA del cliente: ")
+                    if iva == "":
+                        print("No se produjeron modificaciones en el registro")
+                        iva = result[3]
+                    elif iva == "1":
+                        iva = "Responsable Inscripto"
+                    elif iva == "2":
+                        iva = "Sujeto Excento"
+                    elif iva == "3":
+                        iva = "Autonomo"
+                    elif iva == "4":
+                        iva = "Monotributista"
+                    else:
+                        print("No se ingreso una opcion valida, por lo tanto no se realizaran cambios en el registro.")
+                        iva = result[3]
+                    Client.change_iva_client(dni_cli, iva)
+                    Client.query_client(dni_cli)
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
