@@ -8,12 +8,14 @@ BD = "ferreteria"
 clientTable = "clientes"
 provTable = "proveedores"
 artTable = "articulos"
+saleTable = "ventas"
 
 def set_Database():
     #Database.create_DB(BD)
-    Database.create_Table_Clientes(BD, clientTable)
+    #Database.create_Table_Clientes(BD, clientTable)
     #Database.create_Table_Proveedores(BD, provTable)
     #Database.create_Table_Articulos(BD, artTable)
+    Database.create_Table_Ventas(BD, saleTable)
 
 #set_Database()
 
