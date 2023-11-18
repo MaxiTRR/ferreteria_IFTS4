@@ -60,6 +60,18 @@ def show_menu_clients():
         *********************************************************
         """)
 
+#Funcion para mostrar el menu de ventas
+def show_menu_sales():
+    print("""
+        *************** MENU VENTAS - FERRETERIA ***************
+
+        [1] - Venta (Facturacion)
+        [2] - Listado ventas del dia
+        [3] - Salir menu principal
+
+        *********************************************************
+        """)
+
 #Funcoon para mostrar la opcion ante el IVA del cliente
 def show_menu_Iva():
     print("""
@@ -122,6 +134,19 @@ def input_price(text):
         else:
             val = False
             return price
+
+#Validacion input cantidad de articulos para vender
+def input_cant(text):
+    cant = 0
+    val = True
+    while val == True:
+        try:
+            cant = int(input(text))
+        except ValueError:
+            print("Solo se aceptan valores numericos")
+        else:
+            val = False
+            return cant #REVISAR
 
 #Funcion para seguir agregando opciones o salir al submenu (proveedores)
 def continue_or_exit(opt):

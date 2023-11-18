@@ -3,6 +3,7 @@ from helpers_ferreteria import show_menu_principal
 from menu_provider_ferreteria import *
 from menu_article_ferreteria import *
 from menu_client_ferreteria import *
+from menu_sales_ferreteria import *
 
 principal_Menu = True
 
@@ -18,7 +19,7 @@ while principal_Menu == True:
     if option == "3":
         menu_articles()
     if option == "4":
-        print("VENTAS")
+        menu_sales()
     if option == "5":
         print("Saludos!")
         principal_Menu = False
