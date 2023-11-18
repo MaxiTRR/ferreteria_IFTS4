@@ -15,3 +15,5 @@ class Sale():
         val = (id_venta, dni_cli, cod_art, monto_pago, cant_art, fecha_venta)
         mycursor.execute(sql, val)
         mydb.commit()
+        
+        
