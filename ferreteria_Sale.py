@@ -33,7 +33,7 @@ class Sale():
         sql = "SELECT * FROM ventas WHERE fecha_venta LIKE '"+time+"%'"
         mycursor.execute(sql)
         myresultado = mycursor.fetchall()
-        # print(myresultado)
+        print(myresultado)
         return myresultado
 
         
