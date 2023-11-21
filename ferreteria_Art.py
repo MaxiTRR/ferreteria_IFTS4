@@ -82,5 +82,13 @@ class Article():
         mycursor.execute(sql)
         mydb.commit()
 
+    @classmethod
+    def change_stock_article(self, cod_art, new_stock):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"UPDATE articulos SET stock_art = {new_stock} WHERE cod_art = {cod_art}"
+        mycursor.execute(sql)
+        mydb.commit()
+
 
 

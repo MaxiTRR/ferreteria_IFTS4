@@ -148,6 +148,11 @@ def input_cant(text):
             val = False
             return cant #REVISAR
 
+#Funcion para calcular el monto total a pagar en una venta
+def total_sale(cant, precio_art):
+    total = cant * precio_art
+    return total
+
 #Funcion para seguir agregando opciones o salir al submenu (proveedores)
 def continue_or_exit(opt):
     opc_Chosen = opt
