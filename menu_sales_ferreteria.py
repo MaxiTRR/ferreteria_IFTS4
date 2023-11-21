@@ -51,5 +51,23 @@ def menu_sales():
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
+        while opc_Chosen == "2":
+            fecha_hoy = datetime.now()
+            fecha_format = fecha_hoy.strftime('%Y-%m-%d')
+            print(fecha_hoy.strftime('%Y-%m-%d')) #REVISAR
+            result = Sale.query_today_sales(fecha_format)
+            if not result:
+                print("No se encontro ninguna venta el dia de hoy.")
+            else:
+                for reg in result:
+                    date = reg[5]
+                    print(reg) #REVISAR
+                    print(date) #REVISAR
+
+            opc_Chosen = continue_or_exit(opc_Chosen)
+
+        if opc_Chosen == "3":
+            opc = False
+
 
                                 
