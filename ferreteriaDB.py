@@ -63,7 +63,7 @@ class Database():
     def create_Table_Ventas(self, name_DB, name_Table):
         mydb = self.connect_DB(name_DB)
         mycursor = mydb.cursor()
-        mycursor.execute(f"CREATE TABLE {name_Table}(id_venta INT PRIMARY KEY, dni_cli INT, cod_art INT, monto_pago INT, cant_art INT, fecha_venta DATE)")
+        mycursor.execute(f"CREATE TABLE {name_Table}(id_venta INT AUTO_INCREMENT PRIMARY KEY, dni_cli INT, cod_art INT, monto_pago INT, cant_art INT, fecha_venta DATE)")
         mycursor.execute("SHOW TABLES")
         for ind in mycursor:
             print(ind)
