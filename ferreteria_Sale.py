@@ -15,5 +15,16 @@ class Sale():
         val = (dni_cli, cod_art, monto_pago, cant_art, fecha_venta)
         mycursor.execute(sql, val)
         mydb.commit()
+
+    @classmethod
+    def query_sale(self):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"SELECT * FROM ventas ORDER BY id_venta DESC LIMIT 1"
+        mycursor.execute(sql)
+        myresultado = mycursor.fetchone()
+        #print(myresultado)
+        return myresultado
+
         
         
