@@ -26,5 +26,15 @@ class Sale():
         #print(myresultado)
         return myresultado
 
+    @classmethod
+    def query_today_sales(self, time):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = "SELECT * FROM ventas WHERE fecha_venta LIKE '"+time+"%'"
+        mycursor.execute(sql)
+        myresultado = mycursor.fetchall()
+        # print(myresultado)
+        return myresultado
+
         
         
