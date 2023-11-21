@@ -2,7 +2,7 @@ from helpers_ferreteria import inputDni, continue_or_exit, show_menu_sales, inpu
 from ferreteria_Sale import *
 from ferreteria_Client import *
 from ferreteria_Art import *
-from datetime import date
+from datetime import datetime
 
 def menu_sales():
     opc = True
@@ -39,10 +39,13 @@ def menu_sales():
                                     total_pago = 0
                                     total_pago = total_sale(cant, result_art[3])
                                     new_stock = result_art[6] - cant
-                                    fecha = date.today()
+                                    fecha = datetime.now()
                                     print(f"El monto total a pagar es de ${total_pago}")
                                     print("registro venta")   #REGISTRAR VENTA
                                     Sale.reg_Sale(dni_cli, cod_art, total_pago, cant, fecha)
+                                    result_sale = Sale.query_sale()
+                                    date = result_sale[5]
+                                    print(date.strftime("%c")) #CAMBIAR Y FORMATEAR CON EL RESTO DE LOS INDICES
                                     print("Actualizar stock articulo") #ACTUALIZAR STOCK EN ARTICULOS
                                     Article.change_stock_article(cod_art, new_stock)
 
