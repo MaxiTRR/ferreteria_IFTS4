@@ -1,6 +1,7 @@
 from helpers_ferreteria import inputDni, show_menu_providers, continue_or_exit, input_Tel, input_cant, total_sale, input_cod_art
 from ferreteria_Prov import *
 from ferreteria_Art import *
+from datetime import datetime
 
 def menu_providers():
     opc = True
@@ -149,6 +150,9 @@ def menu_providers():
                                         op_proceed = False
                                     elif proceed == "Y":
                                         print("registrar pedido") #REVISAR
+                                        fecha_trans = datetime.now()
+                                        Provider.reg_trans_pedido(dni_prov, cod_art, cant, total_pago, fecha_trans, "pedido stock")
+                                        Article.change_estadoTrans_article(cod_art, True)
                                         op_proceed = False
                                     else:
                                         print("Opcion no valida. Por favor, ingrese Y o N.")
