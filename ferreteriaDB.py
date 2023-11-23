@@ -73,7 +73,7 @@ class Database():
         mydb = self.connect_DB(name_DB)
         mycursor = mydb.cursor()
         mycursor.execute(f"CREATE TABLE {name_Table}(id_trans INT AUTO_INCREMENT PRIMARY KEY, dni_prov_trans INT, cod_art_trans INT, cant_art_trans INT,"
-                         f"precio_trans INT, fecha_trans DATETIME, tipo_trans VARCHAR(255))")
+                         f"precio_trans INT, fecha_trans DATETIME, tipo_trans VARCHAR(255), obs_trans VARCHAR(255), estado_trans BOOL)")
         mycursor.execute("SHOW TABLES")
         for ind in mycursor:
             print(ind)
