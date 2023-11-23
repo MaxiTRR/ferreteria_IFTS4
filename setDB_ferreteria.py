@@ -20,7 +20,8 @@ def set_Database():
 #set_Database()
 
 def set_Client_Regs():
-    Client.reg_Client(32548528, "Peter", "Parker", "Telarania 29", 45245887, "spiderParker@web.com", "monotributista", True)
+    #Client.reg_Client(32548528, "Peter", "Parker", "Telarania 29", 45245887, "spiderParker@web.com", "monotributista", True)
+    Client.reg_Client(00000000, "ferreteria", "Maxi", "Justo aca 111", 48888888, "ferreteria@maxi.com", "consumidor final", True) #Cliente usado para consumidor final
 
 #set_Client_Regs()
 
