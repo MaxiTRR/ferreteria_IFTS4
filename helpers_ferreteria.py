@@ -83,6 +83,15 @@ def show_menu_Iva():
 
         """)
 
+#Funcion para mostrar las opciones de cliente registrado o consumidor final en VENTAS
+def show_menu_consumer():
+    print("""
+
+        [1] - Consumidor Final
+        [2] - Cliente
+
+        """)
+
 #Validacion input del dni del cliente y proveedores
 def inputDni(text):
     val = True
