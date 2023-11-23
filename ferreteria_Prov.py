@@ -17,6 +17,17 @@ class Provider():
         mydb.commit()
 
     @classmethod
+    def reg_trans_pedido(self, dni_prov_trans, cod_art_trans, cant_art_trans, precio_trans, fecha_trans,
+                         tipo_trans, obs_trans=None, estado_trans=True):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = "INSERT INTO transacciones_prov (dni_prov_trans, cod_art_trans, cant_art_trans, precio_trans, fecha_trans, tipo_trans, " \
+              "obs_trans, estado_trans) VALUES(%s, %s, %s, %s, %s, %s, %s, %s)"
+        val = (dni_prov_trans, cod_art_trans, cant_art_trans, precio_trans, fecha_trans, tipo_trans, obs_trans, estado_trans)
+        mycursor.execute(sql, val)
+        mydb.commit()
+
+    @classmethod
     def query_provider(self, dni_prov):
         mydb = self.Database
         mycursor = mydb.cursor()
@@ -71,3 +82,5 @@ class Provider():
         sql = f"UPDATE proveedores SET tel_prov = {tel_prov} WHERE dni_prov = {dni_prov}"
         mycursor.execute(sql)
         mydb.commit()
+
+

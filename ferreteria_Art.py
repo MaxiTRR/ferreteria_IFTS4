@@ -101,5 +101,13 @@ class Article():
         mycursor.execute(sql)
         mydb.commit()
 
+    @classmethod
+    def change_estadoTrans_article(self, cod_art, new_estado_trans):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"UPDATE articulos SET estado_trans = {new_estado_trans} WHERE cod_art = {cod_art}"
+        mycursor.execute(sql)
+        mydb.commit()
+
 
 
