@@ -140,7 +140,18 @@ def menu_providers():
                                 total_pago = 0
                                 total_pago = total_sale(cant, result_art[3])
                                 print(f"El total a pagar es de ${total_pago}")
-                                ###
+                                #IMPRIMIR LOS DATOS DEL PEDIDO ACA
+                                op_proceed = True
+                                while op_proceed == True:
+                                    proceed = input("Desea registrar el pedido? Y/N: ").upper()
+                                    if proceed == "N":
+                                        print("La opcion elegida fue N. No se realizo el pedido.")
+                                        op_proceed = False
+                                    elif proceed == "Y":
+                                        print("registrar pedido") #REVISAR
+                                        op_proceed = False
+                                    else:
+                                        print("Opcion no valida. Por favor, ingrese Y o N.")
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
