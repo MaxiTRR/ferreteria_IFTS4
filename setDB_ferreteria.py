@@ -9,13 +9,15 @@ clientTable = "clientes"
 provTable = "proveedores"
 artTable = "articulos"
 saleTable = "ventas"
+transTable = "transacciones_prov"
 
 def set_Database():
     #Database.create_DB(BD)
     #Database.create_Table_Clientes(BD, clientTable)
     #Database.create_Table_Proveedores(BD, provTable)
     #Database.create_Table_Articulos(BD, artTable)
-    Database.create_Table_Ventas(BD, saleTable)
+    #Database.create_Table_Ventas(BD, saleTable)
+    Database.create_Table_Trans(BD, transTable )
 
 #set_Database()
 
@@ -34,3 +36,6 @@ def set_Art_Reg():
     Article.reg_Art(3100, "Pinza De Punta","herramienta manual", 7.791, 42896524, True,0, False)
 
 #set_Art_Reg()
+
+
+
