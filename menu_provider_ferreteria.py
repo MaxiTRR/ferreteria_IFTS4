@@ -1,5 +1,6 @@
-from helpers_ferreteria import inputDni, show_menu_providers, continue_or_exit, input_Tel
+from helpers_ferreteria import inputDni, show_menu_providers, continue_or_exit, input_Tel, input_cant, total_sale, input_cod_art
 from ferreteria_Prov import *
+from ferreteria_Art import *
 
 def menu_providers():
     opc = True
@@ -111,6 +112,35 @@ def menu_providers():
                     else:
                         Provider.change_tel_prov(dni_prov, tel_prov)
                         Provider.query_dni_razon_social_tel_alta_prov(dni_prov)
+
+            opc_Chosen = continue_or_exit(opc_Chosen)
+
+        #REALIZAR PEDIDOS STOCK
+        while opc_Chosen == "5":
+            dni_prov = inputDni("Ingrese el dni del proveedor del que desea dar de baja: ")
+            result_prov = Provider.query_dni_razonSocial_alta_estadoPedido_prov(dni_prov)
+            if not result_prov:
+                print("El proveedor no se encuentra registrado.")
+            else:
+                if result_prov[2] == 0:
+                    print("El proveedor se encuentra dado de baja.")
+                else:
+                    cod_art = input_cod_art("Ingrese el codigo del articulo que desea vender: ")
+                    result_art = Article.query_art(cod_art)
+                    if not result_art:
+                        print("El articulo no se encuentra registrado.")
+                    else:
+                        if result_art[5] == 0:
+                            print("El articulo se encuentra dado de baja.")
+                        else:
+                            if result_art[4] != dni_prov:
+                                print("El proveedor del articulo no se corresponde con el ingresado anteriormente")
+                            else:
+                                cant = input_cant("Ingrese la cantidad de articulos que desea pedir: ")
+                                total_pago = 0
+                                total_pago = total_sale(cant, result_art[3])
+                                print(f"El total a pagar es de ${total_pago}")
+                                ###
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
