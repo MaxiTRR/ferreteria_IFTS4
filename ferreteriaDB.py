@@ -67,3 +67,14 @@ class Database():
         mycursor.execute("SHOW TABLES")
         for ind in mycursor:
             print(ind)
+
+    @classmethod
+    def create_Table_Trans(self, name_DB, name_Table):
+        mydb = self.connect_DB(name_DB)
+        mycursor = mydb.cursor()
+        mycursor.execute(f"CREATE TABLE {name_Table}(id_trans INT AUTO_INCREMENT PRIMARY KEY, dni_prov_trans INT, cod_art_trans INT, cant_art_trans INT,"
+                         f"precio_trans INT, fecha_trans DATETIME, tipo_trans VARCHAR(255))")
+        mycursor.execute("SHOW TABLES")
+        for ind in mycursor:
+            print(ind)
+
