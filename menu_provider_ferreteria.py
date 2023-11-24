@@ -161,6 +161,63 @@ def menu_providers():
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
+        #DEVOLUCION STOCK
+        while opc_Chosen == "6":
+            dni_prov = inputDni("Ingrese el dni del proveedor del que desea dar de baja: ")
+            result_prov = Provider.query_dni_razonSocial_alta_estadoPedido_prov(dni_prov)
+            if not result_prov:
+                print("El proveedor no se encuentra registrado.")
+            else:
+                if result_prov[2] == 0:
+                    print("El proveedor se encuentra dado de baja.")
+                else:
+                    cod_art = input_cod_art("Ingrese el codigo del articulo que desea vender: ")
+                    result_art = Article.query_art(cod_art)
+                    if not result_art:
+                        print("El articulo no se encuentra registrado.")
+                    else:
+                        if result_art[5] == 0:
+                            print("El articulo se encuentra dado de baja.")
+                        else:
+                            if result_art[4] != dni_prov:
+                                print("El proveedor del articulo no se corresponde con el ingresado anteriormente")
+                            else:
+                                if result_art[7] == 1:
+                                    print("El artculo se encuentra con una transaccion activa. Debe finalizar primero para comenzar una nueva.")
+                                else:
+                                    if result_art[6] <= 0:
+                                        print("No hay stock del articulo para realizar una devolucion.")
+                                    else:
+                                        op_cant = True
+                                        while op_cant == True:
+                                            cant = input_cant("Ingrese la cantidad de articulos que desea devolver: ")
+                                            if cant > result_art[6]:
+                                                print("La cantidad de devolucion no puede ser mayor al stock")
+                                            else:
+                                                op_cant = False
+                                        obs = input("Ingrese el motivo u observacion acerca de la devolucion del articulo: ")
+                                        #PRINT DE LOS DATOS ??
+                                        op_proceed = True
+                                        while op_proceed == True:
+                                            proceed = input("Desea registrar la devolucion? Y/N: ").upper()
+                                            if proceed == "N":
+                                                print("La opcion elegida fue N. No se realizo la devolucion.")
+                                                op_proceed = False
+                                            elif proceed == "Y":
+                                                fecha_trans = datetime.now()
+                                                Provider.reg_trans_pedido(dni_prov, cod_art, cant, 0,
+                                                                          fecha_trans, "devolucion", obs)
+                                                Article.change_estadoTrans_article(cod_art, True)
+                                                new_stock = result_art[6] - cant
+                                                Article.change_stock_article(cod_art, new_stock)
+                                                Provider.query_trans()
+                                                # IMPRIMIR LOS RESULTADOS DE LA QUERY. FIJARSE TEMA DE LA FECHA
+                                                op_proceed = False
+                                            else:
+                                                print("Opcion no valida. Por favor, ingrese Y o N.")
+
+            opc_Chosen = continue_or_exit(opc_Chosen)
+
         #SALIR MENU PRINCIPAL
         if opc_Chosen == "7":
             opc = False

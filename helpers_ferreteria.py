@@ -154,8 +154,11 @@ def input_cant(text):
         except ValueError:
             print("Solo se aceptan valores numericos")
         else:
-            val = False
-            return cant #REVISAR
+            if cant <= 0:                                         #REVISAR ESTE IF
+                print("El valor tiene que ser mayor a 0 (cero)")
+            else:
+                val = False
+                return cant #REVISAR
 
 #Funcion para calcular el monto total a pagar en una venta
 def total_sale(cant, precio_art):
