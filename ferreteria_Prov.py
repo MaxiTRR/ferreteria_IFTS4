@@ -78,6 +78,20 @@ class Provider():
         return myresultado
 
     @classmethod
+    def query_trans_for_update_stock(self, cod_art):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"SELECT * FROM transacciones_prov WHERE (cod_art_trans = {cod_art} AND tipo_trans = 'pedido stock' AND estado_trans = 1)"
+        mycursor.execute(sql)
+        myresultado = mycursor.fetchall()
+        if myresultado:
+            for row in myresultado:
+                print(row)  # REVISAR
+        else:
+            print("No se encontraron registros.")
+        return myresultado
+
+    @classmethod
     def change_alta_provider(self, dni_prov, alta_prov):
         mydb = self.Database
         mycursor = mydb.cursor()
@@ -93,4 +107,11 @@ class Provider():
         mycursor.execute(sql)
         mydb.commit()
 
+    @classmethod
+    def change_estado_trans(self, id_trans, new_estado):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"UPDATE transacciones_prov SET estado_trans = {new_estado} WHERE id_trans = {id_trans}"
+        mycursor.execute(sql)
+        mydb.commit()
 
