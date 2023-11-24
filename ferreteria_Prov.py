@@ -68,6 +68,16 @@ class Provider():
         return myresultado
 
     @classmethod
+    def query_trans(self):
+        mydb = self.Database
+        mycursor = mydb.cursor()
+        sql = f"SELECT * FROM transacciones_prov ORDER BY id_trans DESC LIMIT 1"
+        mycursor.execute(sql)
+        myresultado = mycursor.fetchone()
+        print(myresultado) #REVISAR
+        return myresultado
+
+    @classmethod
     def change_alta_provider(self, dni_prov, alta_prov):
         mydb = self.Database
         mycursor = mydb.cursor()
