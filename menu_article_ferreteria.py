@@ -111,6 +111,41 @@ def menu_articles():
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
+        #ACTUALIZAR STOCK (INGRESO DE REMITO)
+        while opc_Chosen == "5":
+            cod_art = input_cod_art("Ingrese el codigo del articulo que desea modificar: ")
+            result_art = Article.query_cod_nombre_alta_stock_estado_article(cod_art)
+            if not result_art:
+                print("El articulo se encuentra registrado.")
+            else:
+                if result_art[2] == 0:
+                    print("El articulo se encuentra dado de baja.")
+                else:
+                    result_trans = Provider.query_trans_for_update_stock(cod_art)
+                    if not result_trans:
+                        print("No se encontraron transacciones de pedido de este articulo.")
+                    else:
+                        op_proceed = True
+                        while op_proceed == True:
+                            proceed = input("Se encontro stock para actualizar. Desea hacerlo? Y/N: ").upper()
+                            if proceed == "N":
+                                print("La opcion elegida fue N. No se realizo la devolucion.")
+                                op_proceed = False
+                            elif proceed == "Y":
+                                print("Puede actualizar el stock!") #REVISAR
+                                new_stock = 0
+                                for reg in result_trans:
+                                    new_stock = reg[3] + result_art[3]
+                                Article.change_stock_article(cod_art, new_stock)
+                                Article.change_estadoTrans_article(cod_art, 0)
+                                for reg in result_trans:
+                                    Provider.change_estado_trans(reg[0], 0)
+                                op_proceed = False
+                            else:
+                                print("Opcion no valida. Por favor, ingrese Y o N.")
+
+            opc_Chosen = continue_or_exit(opc_Chosen)
+
         #CONSULTA ARTICULOS SIN STOCK
         while opc_Chosen == "6":
             result = Article.query_codArt_nombreArt_alta_stock_article()
