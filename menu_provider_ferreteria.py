@@ -153,6 +153,8 @@ def menu_providers():
                                         fecha_trans = datetime.now()
                                         Provider.reg_trans_pedido(dni_prov, cod_art, cant, total_pago, fecha_trans, "pedido stock")
                                         Article.change_estadoTrans_article(cod_art, True)
+                                        Provider.query_trans()
+                                        #IMPRIMIR LOS RESULTADOS DE LA QUERY. FIJARSE TEMA DE LA FECHA
                                         op_proceed = False
                                     else:
                                         print("Opcion no valida. Por favor, ingrese Y o N.")
