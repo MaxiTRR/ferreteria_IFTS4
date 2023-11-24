@@ -53,7 +53,27 @@ def menu_articles():
                             else:
                                 operation = 4
 
-                        Article.reg_Art(cod_art, ing_art_name, ing_art_rubro, ing_art_price, dni_prov)
+                        print()
+                        print("**************************************************************")
+                        print("CODIGO: ", cod_art)
+                        print("NOMBRE: ", ing_art_name)
+                        print("RUBRO: ", ing_art_rubro)
+                        print("PRECIO: ", ing_art_price)
+                        print("DNI PROVEEDOR: ", dni_prov)
+                        print("**************************************************************")
+                        print()
+
+                        op_proceed = True
+                        while op_proceed == True:
+                            proceed = input("Se encontro stock para actualizar. Desea hacerlo? Y/N: ").upper()
+                            if proceed == "N":
+                                print("La opcion elegida fue N. No se realizo el alta del articulo.")
+                                op_proceed = False
+                            elif proceed == "Y":
+                                Article.reg_Art(cod_art, ing_art_name, ing_art_rubro, ing_art_price, dni_prov)
+                                op_proceed = False
+                            else:
+                                print("Opcion no valida. Por favor, ingrese Y o N.")
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
