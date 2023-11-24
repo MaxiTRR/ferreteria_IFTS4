@@ -44,7 +44,7 @@ class Provider():
         sql = f"SELECT dni_prov, alta_prov FROM proveedores WHERE dni_prov = {dni_prov}"
         mycursor.execute(sql)
         myresultado = mycursor.fetchone()
-        print(myresultado) #REVISAR ESTE PRINT
+        #print(myresultado) #REVISAR ESTE PRINT
         return myresultado
 
     @classmethod
