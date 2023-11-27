@@ -52,7 +52,7 @@ def menu_articles():
                                 else:
                                     print("Opcion no valida. Por favor, ingrese Y o N.")
                     else:
-                        print("El articulo no se encuentra registrado. Se pueden ingresar sus datos para registrarlo.") 
+                        print("El articulo no se encuentra registrado. Se pueden ingresar sus datos para registrarlo.")
                         operation = 1
 
                         while operation == 1:
@@ -109,7 +109,18 @@ def menu_articles():
             if not result:
                 print("El articulo no se encuentra registrado.")  # CAMBIAR
             else:
-                print(result[0]) #CAMBIAR
+                print()
+                print("**************************************************************")
+                print("CODIGO: ", result[0])
+                print("NOMBRE: ", result[1])
+                print("RUBRO: ", result[2])
+                print("PRECIO: ", result[3])
+                print("DNI PROVEEDOR: ", result[4])
+                print("ESTADO ALTA: ", result[5])
+                print("STOCK: ", result[6])
+                print("ESTADO TRANSACCION: ", result[7])
+                print("**************************************************************")
+                print()
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
