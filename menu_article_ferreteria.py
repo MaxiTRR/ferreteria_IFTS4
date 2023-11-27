@@ -172,8 +172,19 @@ def menu_articles():
             cod_art = input_cod_art("Ingrese el codigo del articulo que desea modificar: ")
             result = Article.query_codArt_name_price_alta_estadoTrans_article(cod_art)
             if not result:
-                print("El articulo se encuentra registrado.")
+                print("El articulo no se encuentra registrado.")
             else:
+
+                print()
+                print("**************************************************************")
+                print("CODIGO: ", result[0])
+                print("NOMBRE: ", result[1])
+                print("PRECIO: ", result[2])
+                print("ESTADO ALTA: ", result[3])
+                print("ESTADO TRANSACCION: ", result[4])
+                print("**************************************************************")
+                print()
+
                 if result[3] == 0:
                     print("El articulo se encuentra dado de baja. No puede modificar sus datos hasta darlo de alta nuevamente.")
                 else:
@@ -183,11 +194,28 @@ def menu_articles():
                         ing_new_price = input_price("Ingrese el nuevo precio del articulo (No ingrese datos para dejar como estaba):")
                         if ing_new_price == 0:
                             print("No se han producido cambios en el registro.")
-                            print(result[0] + result [2]) #CAMBIAR
+                            #print(result[0] + result[2]) #CAMBIAR
                         else:
-                            Article.chage_price_article(cod_art, ing_new_price)
-                            Article.query_codArt_name_price_alta_estadoTrans_article(cod_art) #CAMBIAR?
-                            print("Se han modificado sus datos con exito!") #CAMBIAR
+                            print()
+                            print("**************************************************************")
+                            print("PRECIO ORIGINAL: $", result[2])
+                            print("PRECIO NUEVO: $", ing_new_price)
+                            print()
+                            print("**************************************************************")
+                            op_proceed = True
+                            while op_proceed == True:
+                                proceed = input("Desea modificar los datos del articulo? Y/N: ").upper()
+                                if proceed == "N":
+                                    print("La opcion elegida fue N. No se realizo el alta del articulo.")
+                                    op_proceed = False
+                                elif proceed == "Y":
+                                    Article.chage_price_article(cod_art, ing_new_price)
+                                    #Article.query_codArt_name_price_alta_estadoTrans_article(cod_art) #CAMBIAR?
+                                    print("Los datos del articulo fueron modificados con exito!")
+                                    op_proceed = False
+                                else:
+                                    print("Opcion no valida. Por favor, ingrese Y o N.")
+
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
@@ -223,6 +251,7 @@ def menu_articles():
                                 op_proceed = False
                             else:
                                 print("Opcion no valida. Por favor, ingrese Y o N.")
+                                
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
