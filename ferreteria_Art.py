@@ -23,7 +23,7 @@ class Article():
         sql = f"SELECT * FROM articulos WHERE cod_art = {cod_art}"
         mycursor.execute(sql)
         myresultado = mycursor.fetchone()
-        print(myresultado)  # REVISAR ESTE PRINT
+        #print(myresultado)  # REVISAR ESTE PRINT
         return myresultado
 
     @classmethod
