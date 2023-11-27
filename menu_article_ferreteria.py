@@ -250,6 +250,7 @@ def menu_articles():
                                 op_proceed = False
                             else:
                                 print("Opcion no valida. Por favor, ingrese Y o N.")
+                                
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
