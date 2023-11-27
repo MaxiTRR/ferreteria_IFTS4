@@ -22,11 +22,35 @@ def menu_articles():
                     cod_art = input_cod_art("Ingrese el codigo del articulo que desea registrar/dar de alta: ")
                     result_art = Article.query_codArt_alta_article(cod_art)
                     if result_art:
+                        print_data_art = Article.query_art(cod_art)
+
+                        print()
+                        print("**************************************************************")
+                        print("CODIGO: ", print_data_art[0])
+                        print("NOMBRE: ", print_data_art[1])
+                        print("RUBRO: ", print_data_art[2])
+                        print("PRECIO: ", print_data_art[3])
+                        print("DNI PROVEEDOR: ", print_data_art[4])
+                        print("ESTADO ALTA: ", print_data_art[5])
+                        print("**************************************************************")
+                        print()
+
                         if result_art[1] == 1:
                             print("El articulo ya se encuentra dado de alta.")
                         else:
-                            print("El articulo se encuentra dado de baja. Se dara de alta.") #CAMBIAR
-                            Article.change_alta_article(cod_art, 1)
+                            print("El articulo se encuentra dado de baja.") #CAMBIAR
+                            op_proceed = True
+                            while op_proceed == True:
+                                proceed = input("Desea dar de alta nuevamente el articulo? Y/N: ").upper()
+                                if proceed == "N":
+                                    print("La opcion elegida fue N. No se realizo el alta del articulo.")
+                                    op_proceed = False
+                                elif proceed == "Y":
+                                    Article.change_alta_article(cod_art, 1)
+                                    print("El articulo se dio de alta con exito!")
+                                    op_proceed = False
+                                else:
+                                    print("Opcion no valida. Por favor, ingrese Y o N.")
                     else:
                         print("El articulo no se encuentra registrado. Se pueden ingresar sus datos.") #CAMBIAR
                         operation = 1
