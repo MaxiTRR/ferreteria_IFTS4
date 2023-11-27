@@ -131,6 +131,19 @@ def menu_articles():
             if not result:
                 print("El articulo no se encuentra registrado.")  # CAMBIAR
             else:
+                print_data_art = Article.query_art(cod_art)
+
+                print()
+                print("**************************************************************")
+                print("CODIGO: ", print_data_art[0])
+                print("NOMBRE: ", print_data_art[1])
+                print("RUBRO: ", print_data_art[2])
+                print("PRECIO: ", print_data_art[3])
+                print("DNI PROVEEDOR: ", print_data_art[4])
+                print("ESTADO ALTA: ", print_data_art[5])
+                print("**************************************************************")
+                print()
+
                 if result[1] == 0:
                     print("El articulo ya se encuentra dado de baja.")
                 else:
@@ -138,8 +151,19 @@ def menu_articles():
                         print("El articulo se encuentra en una transaccion activa. No podra darse de baja hasta que se finalize la transaccion.")
                     else:
                         print("El articulo se dara de baja.") #CAMBIAR
-                        Article.change_alta_article(cod_art, 0)
-                        Article.query_codArt_alta_estadoTrans_article(cod_art) #CAMBIAR
+                        op_proceed = True
+                        while op_proceed == True:
+                            proceed = input("Desea dar de baja el articulo? Y/N: ").upper()
+                            if proceed == "N":
+                                print("La opcion elegida fue N. No se realizo el alta del articulo.")
+                                op_proceed = False
+                            elif proceed == "Y":
+                                Article.change_alta_article(cod_art, 0)
+                                #Article.query_codArt_alta_estadoTrans_article(cod_art) #CAMBIAR
+                                print("El articulo fue dado de baja con exito!")
+                                op_proceed = False
+                            else:
+                                print("Opcion no valida. Por favor, ingrese Y o N.")
 
             opc_Chosen = continue_or_exit(opc_Chosen)
 
