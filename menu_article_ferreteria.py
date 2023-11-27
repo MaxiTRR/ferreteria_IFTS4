@@ -216,6 +216,7 @@ def menu_articles():
                                 else:
                                     print("Opcion no valida. Por favor, ingrese Y o N.")
 
+
             opc_Chosen = continue_or_exit(opc_Chosen)
 
         #ACTUALIZAR STOCK (INGRESO DE REMITO)
