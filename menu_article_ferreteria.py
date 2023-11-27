@@ -38,7 +38,7 @@ def menu_articles():
                         if result_art[1] == 1:
                             print("El articulo ya se encuentra dado de alta.")
                         else:
-                            print("El articulo se encuentra dado de baja.") #CAMBIAR
+                            print("El articulo se encuentra dado de baja.")
                             op_proceed = True
                             while op_proceed == True:
                                 proceed = input("Desea dar de alta nuevamente el articulo? Y/N: ").upper()
@@ -52,7 +52,7 @@ def menu_articles():
                                 else:
                                     print("Opcion no valida. Por favor, ingrese Y o N.")
                     else:
-                        print("El articulo no se encuentra registrado. Se pueden ingresar sus datos.") #CAMBIAR
+                        print("El articulo no se encuentra registrado. Se pueden ingresar sus datos para registrarlo.") 
                         operation = 1
 
                         while operation == 1:
@@ -89,12 +89,13 @@ def menu_articles():
 
                         op_proceed = True
                         while op_proceed == True:
-                            proceed = input("Se encontro stock para actualizar. Desea hacerlo? Y/N: ").upper()
+                            proceed = input("Desea registrar el articulo? Y/N: ").upper()
                             if proceed == "N":
                                 print("La opcion elegida fue N. No se realizo el alta del articulo.")
                                 op_proceed = False
                             elif proceed == "Y":
                                 Article.reg_Art(cod_art, ing_art_name, ing_art_rubro, ing_art_price, dni_prov)
+                                print("El articulo fue registrado con exito!")
                                 op_proceed = False
                             else:
                                 print("Opcion no valida. Por favor, ingrese Y o N.")
